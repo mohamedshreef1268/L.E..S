@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Team - Lab Embedded System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2962FF;
+            --secondary-color: #FFA000;
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #E1F5FE 0%, #F3E5F5 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', 'Tajawal', sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        body.rtl {
+            direction: rtl;
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(21, 101, 192, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .university-logo {
+            height: 60px;
+        }
+        
+        .project-title {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .team-content {
+            background: rgba(255,255,255,0.85);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .team-header h2 {
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .supervisors {
+            background: rgba(13, 71, 161, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .supervisors h3 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
+        
+        .supervisors p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .member {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .leader {
+            background: #FFF8E1;
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+        
+        .leader::after {
+            content: "⭐";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 20px;
+        }
+        
+        .member p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .member span {
+            display: block;
+            margin-top: 5px;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .nav-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .nav-button {
+            background: linear-gradient(to right, var(--secondary-color), #FF7043);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="lang-toggle" id="langToggle">العربية</button>
+        <div class="container logo-container">
+            <img src="WhatsApp Image 2025-06-26 at 7.00.40 PM.jpeg" alt="University Logo" class="university-logo">
+            <h1 class="project-title">L.E.S - Project Team</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="team-content">
+            <div class="team-header">
+                <h2>Project Team</h2>
+                <div class="supervisors">
+                    <h3>Supervised by</h3>
+                    <p>Dr. Al-Husseini</p>
+                    <p>Dr. Osama El-Nahas</p>
+                </div>
+            </div>
+            
+            <div class="team-members">
+                <!-- Team Leaders -->
+                <div class="member leader">
+                    <p>Ahmed Mohamed Ragab El-Sayed</p>
+                    <span>Team Leader</span>
+                </div>
+                
+                <div class="member leader">
+                    <p>Mohammed Shreef Mohammed Mahmoud</p>
+                    <span>Team Leader</span>
+                </div>
+                
+                <div class="member leader">
+                    <p>Jana Tarek Edessy Taha Hasan</p>
+                    <span>Team Leader</span>
+                </div>
+                
+                <!-- Team Members -->
+                <div class="member">
+                    <p>Ismail Mohamed Ahmed Mohamed</p>
+                </div>
+                
+                <div class="member">
+                    <p>Amal Mohammed Saad Ebrahim Elnagar</p>
+                </div>
+                
+                <div class="member">
+                    <p>Rania Bakhit Abdel-Mubdi Fahim</p>
+                </div>
+                
+                <div class="member">
+                    <p>Sara Ali Youssef Daif</p>
+                </div>
+                
+                <div class="member">
+                    <p>AbdulRahman Tarek mohamed</p>
+                </div>
+                
+                <div class="member">
+                    <p>Abdel Rahman Mohamed Ibrahim Ali</p>
+                </div>
+                
+                <div class="member">
+                    <p>Alaa El-Din Walid Mahmoud</p>
+                </div>
+                
+                <div class="member">
+                    <p>Fatma Ramadan Sayed Ahmed</p>
+                </div>
+                
+                <div class="member">
+                    <p>Fatma Saad Mohamed Saad</p>
+                </div>
+                
+                <div class="member">
+                    <p>Maher Yasser Fikry El-Sherbiny</p>
+                </div>
+                
+                <div class="member">
+                    <p>Mohamed Abdullah Tawfik Mahmoud</p>
+                </div>
+                
+                <div class="member">
+                    <p>Mariam Mohamed omran Ibrahim</p>
+                </div>
+                
+                <div class="member">
+                    <p>Menna Ahmad Hassan Mohamed</p>
+                </div>
+                
+                <div class="member">
+                    <p>Mirna El-Sayed Shaaban Farhoud</p>
+                </div>
+                
+                <div class="member">
+                    <p>Nada Ibrahim Hassan Gharib</p>
+                </div>
+                
+                <div class="member">
+                    <p>Nada Ismail Saber</p>
+                </div>
+                
+                <div class="member">
+                    <p>Hana Adel Anwar Mostafa</p>
+                </div>
+                
+                <div class="member">
+                    <p>Yara Hani Nagib Mohamed</p>
+                </div>
+                
+                <div class="member">
+                    <p>Youssef Essam El Din Mohamed Abdel Salam</p>
+                </div>
+                
+                <div class="member">
+                    <p>Omnia Emad Aweny Abo zaid</p>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">← Home Page</a>
+                <a href="components.html" class="nav-button">Components Page →</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Borg Al Arab Technological University - Graduation Project 2024</p>
+    </footer>
+
+    <script>
+        const langToggle = document.getElementById('langToggle');
+        const html = document.documentElement;
+        
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('language');
+        if (savedLang === 'ar') {
+            switchToArabic();
+        }
+        
+        langToggle.addEventListener('click', function() {
+            if (html.classList.contains('rtl')) {
+                switchToEnglish();
+            } else {
+                switchToArabic();
+            }
+        });
+        
+        function switchToArabic() {
+            html.classList.add('rtl');
+            html.lang = 'ar';
+            langToggle.textContent = 'English';
+            
+            // Update content to Arabic
+            document.querySelector('.project-title').textContent = 'L.M.S - فريق المشروع';
+            document.querySelector('h2').textContent = 'فريق العمل';
+            document.querySelector('.supervisors h3').textContent = 'برعاية';
+            document.querySelectorAll('.supervisors p')[0].textContent = 'د. الحسيني';
+            document.querySelectorAll('.supervisors p')[1].textContent = 'د. أسامة النحاس';
+            
+            // Update team leaders
+            document.querySelectorAll('.leader span')[0].textContent = 'قائد الفريق';
+            document.querySelectorAll('.leader span')[1].textContent = 'قائد الفريق';
+            document.querySelectorAll('.leader span')[2].textContent = 'قائدة الفريق';
+            
+            document.querySelectorAll('.nav-button')[0].textContent = '← الصفحة الرئيسية';
+            document.querySelectorAll('.nav-button')[1].textContent = 'صفحة المكونات →';
+            document.querySelector('footer p').textContent = 'جامعة برج العرب التكنولوجية - مشروع تخرج 2024';
+            
+            localStorage.setItem('language', 'ar');
+        }
+        
+        function switchToEnglish() {
+            html.classList.remove('rtl');
+            html.lang = 'en';
+            langToggle.textContent = 'العربية';
+            
+            // Revert content to English
+            document.querySelector('.project-title').textContent = 'L.M.S - Project Team';
+            document.querySelector('h2').textContent = 'Project Team';
+            document.querySelector('.supervisors h3').textContent = 'Supervised by';
+            document.querySelectorAll('.supervisors p')[0].textContent = 'Dr. Al-Husseini';
+            document.querySelectorAll('.supervisors p')[1].textContent = 'Dr. Osama El-Nahas';
+            
+            // Revert team leaders
+            document.querySelectorAll('.leader span')[0].textContent = 'Team Leader';
+            document.querySelectorAll('.leader span')[1].textContent = 'Team Leader';
+            document.querySelectorAll('.leader span')[2].textContent = 'Team Leader';
+            
+            document.querySelectorAll('.nav-button')[0].textContent = '← Home Page';
+            document.querySelectorAll('.nav-button')[1].textContent = 'Components Page →';
+            document.querySelector('footer p').textContent = 'Borg Al Arab Technological University - Graduation Project 2024';
+            
+            localStorage.setItem('language', 'en');
+        }
+    </script>
+</body>
+</html>

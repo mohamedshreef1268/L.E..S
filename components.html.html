@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Components - Lab Embedded System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2962FF;
+            --secondary-color: #FFA000;
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #E3F2FD 0%, #EDE7F6 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', 'Tajawal', sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        body.rtl {
+            direction: rtl;
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(21, 101, 192, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .university-logo {
+            height: 60px;
+        }
+        
+        .project-title {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .components-content {
+            background: rgba(255,255,255,0.85);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .component-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .component-card h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+        
+        .component-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .component-table th {
+            background-color: #E3F2FD;
+            text-align: left;
+            padding: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .component-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .component-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .step-list {
+            list-style-type: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 40px;
+            counter-increment: step-counter;
+        }
+        
+        .step-list li:before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--secondary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .use-case {
+            background: #FFF8E1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .nav-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .nav-button {
+            background: linear-gradient(to right, var(--secondary-color), #FF7043);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="lang-toggle" id="langToggle">العربية</button>
+        <div class="container logo-container">
+            <img src="WhatsApp Image 2025-06-26 at 7.00.40 PM.jpeg" alt="University Logo" class="university-logo">
+            <h1 class="project-title">L.E.S - Project Components</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="components-content">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-puzzle-piece"></i> Components Used in the Lab Embedded System Project</h2>
+                
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4><i class="fas fa-microchip"></i> Microcontroller & Core</h4>
+                        <ul>
+                            <li><strong>Arduino UNO</strong> - Main microcontroller for controlling the entire system</li>
+                            <li><strong>Custom PCB Board</strong> - Designed to hold and organize all components</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4><i class="fas fa-wifi"></i> Communication Modules</h4>
+                        <ul>
+                            <li><strong>HC-05/HC-06</strong> - Bluetooth communication</li>
+                            <li><strong>ESP-01/ESP8266</strong> - Wi-Fi/IoT connection</li>
+                            <li><strong>SIM800L</strong> - GSM module for SMS/call</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4><i class="fas fa-tools"></i> Supporting Tools</h4>
+                        <ul>
+                            <li><strong>Breadboard</strong> - For prototyping</li>
+                            <li><strong>Jumper Wires</strong> - For connections</li>
+                            <li><strong>Power Supply</strong> - Stable 5V/3.3V power</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-temperature-low"></i> Sensors</h2>
+                <table class="component-table">
+                    <tr>
+                        <th>Component</th>
+                        <th>Function</th>
+                    </tr>
+                    <tr>
+                        <td>DHT11 / DHT22</td>
+                        <td>Temperature & Humidity sensor</td>
+                    </tr>
+                    <tr>
+                        <td>BMP280 / BME280</td>
+                        <td>Pressure, temperature, and humidity</td>
+                    </tr>
+                    <tr>
+                        <td>MQ3</td>
+                        <td>Gas and alcohol detection</td>
+                    </tr>
+                    <tr>
+                        <td>HC-SR04</td>
+                        <td>Ultrasonic distance measurement</td>
+                    </tr>
+                    <tr>
+                        <td>LDR</td>
+                        <td>Light intensity sensor</td>
+                    </tr>
+                    <tr>
+                        <td>PIR Sensor</td>
+                        <td>Motion detection</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-tv"></i> Output Modules</h2>
+                <div class="component-grid">
+                    <div class="component-card">
+                        <h4>Displays</h4>
+                        <ul>
+                            <li><strong>16x2 LCD (I2C)</strong> - Display text</li>
+                            <li><strong>OLED Display</strong> - Display graphics and data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Actuators</h4>
+                        <ul>
+                            <li><strong>LEDs</strong> - Indicators and lighting</li>
+                            <li><strong>Buzzer</strong> - Sound alert</li>
+                            <li><strong>Relay Module</strong> - Control high-voltage devices</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="component-card">
+                        <h4>Motors</h4>
+                        <ul>
+                            <li><strong>DC Motors + Motor Driver</strong> - For robotic movement</li>
+                            <li><strong>Servo Motors</strong> - Precise angular movement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Project Implementation Steps</h2>
+                <ol class="step-list">
+                    <li>
+                        <h4>Idea Selection</h4>
+                        <p>Choose a smart, functional idea suitable for embedded systems (e.g. sensor-based automation or control systems)</p>
+                    </li>
+                    <li>
+                        <h4>System Design</h4>
+                        <p>Draw a block diagram showing inputs (sensors), processing (Arduino), and outputs (displays, motors, buzzers). Plan wiring and communication protocols (I2C, PWM, Serial, etc.)</p>
+                    </li>
+                    <li>
+                        <h4>Prototyping on Breadboard</h4>
+                        <p>Test individual sensors and modules. Use Serial Monitor for debugging. Validate working logic before final build.</p>
+                    </li>
+                    <li>
+                        <h4>Arduino Programming</h4>
+                        <p>Write code using Arduino IDE. Use libraries like LiquidCrystal_I2C.h for LCD, Servo.h for servo motors, SoftwareSerial.h for GSM/Bluetooth.</p>
+                    </li>
+                    <li>
+                        <h4>Custom PCB Design</h4>
+                        <p>Use tools like Proteus or EasyEDA. Route power lines and signal paths efficiently. Add silkscreen labels for ports and components.</p>
+                    </li>
+                    <li>
+                        <h4>Soldering and Assembly</h4>
+                        <p>Solder components onto the PCB. Verify connections and upload the code. Test the system with full integration.</p>
+                    </li>
+                    <li>
+                        <h4>Final Enclosure</h4>
+                        <p>Design a box or acrylic casing. Ensure proper openings for USB, buttons, LCD, power, etc. Secure internal wiring and manage heat if needed.</p>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Sample Use Cases</h2>
+                <div class="use-case">
+                    <h4>Smart traffic light system</h4>
+                    <p>Automated traffic control using sensors and timing algorithms</p>
+                </div>
+                <div class="use-case">
+                    <h4>Temperature display station</h4>
+                    <p>Real-time environmental monitoring with data logging</p>
+                </div>
+                <div class="use-case">
+                    <h4>Remote-controlled robot via Bluetooth</h4>
+                    <p>Mobile robot with wireless control capabilities</p>
+                </div>
+                <div class="use-case">
+                    <h4>Motion-triggered alarm system</h4>
+                    <p>Security system with PIR sensors and alert notifications</p>
+                </div>
+                <div class="use-case">
+                    <h4>IoT data logger for environment</h4>
+                    <p>Cloud-connected sensor network for environmental monitoring</p>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="team.html" class="nav-button">← Team Page</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Borg Al Arab Technological University - Graduation Project 2024</p>
+    </footer>
+
+    <script>
+        const langToggle = document.getElementById('langToggle');
+        const html = document.documentElement;
+        
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('language');
+        if (savedLang === 'ar') {
+            switchToArabic();
+        }
+        
+        langToggle.addEventListener('click', function() {
+            if (html.classList.contains('rtl')) {
+                switchToEnglish();
+            } else {
+                switchToArabic();
+            }
+        });
+        
+        function switchToArabic() {
+            html.classList.add('rtl');
+            html.lang = 'ar';
+            langToggle.textContent = 'English';
+            
+            // Update header
+            document.querySelector('.project-title').textContent = 'L.M.S - مكونات المشروع';
+            
+            // Section titles
+            document.querySelectorAll('.section-title')[0].innerHTML = '<i class="fas fa-puzzle-piece"></i> المكونات المستخدمة في المشروع';
+            document.querySelectorAll('.section-title')[1].innerHTML = '<i class="fas fa-temperature-low"></i> الحساسات';
+            document.querySelectorAll('.section-title')[2].innerHTML = '<i class="fas fa-tv"></i> وحدات الإخراج';
+            document.querySelectorAll('.section-title')[3].innerHTML = '<i class="fas fa-cogs"></i> خطوات تنفيذ المشروع';
+            document.querySelectorAll('.section-title')[4].innerHTML = '<i class="fas fa-lightbulb"></i> نماذج تطبيقية';
+            
+            // Microcontroller card
+            const mcCard = document.querySelectorAll('.component-card')[0];
+            mcCard.querySelector('h4').innerHTML = '<i class="fas fa-microchip"></i> المتحكم الدقيق والمكونات الأساسية';
+            mcCard.querySelectorAll('li')[0].innerHTML = '<strong>Arduino UNO</strong> - المتحكم الرئيسي للنظام';
+            mcCard.querySelectorAll('li')[1].innerHTML = '<strong>لوحة PCB مخصصة</strong> - مصممة لتنظيم جميع المكونات';
+            
+            // Communication card
+            const commCard = document.querySelectorAll('.component-card')[1];
+            commCard.querySelector('h4').innerHTML = '<i class="fas fa-wifi"></i> وحدات الاتصال';
+            commCard.querySelectorAll('li')[0].innerHTML = '<strong>HC-05/HC-06</strong> - اتصال بلوتوث';
+            commCard.querySelectorAll('li')[1].innerHTML = '<strong>ESP-01/ESP8266</strong> - اتصال واي فاي/إنترنت الأشياء';
+            commCard.querySelectorAll('li')[2].innerHTML = '<strong>SIM800L</strong> - وحدة GSM للرسائل والمكالمات';
+            
+            // Tools card
+            const toolsCard = document.querySelectorAll('.component-card')[2];
+            toolsCard.querySelector('h4').innerHTML = '<i class="fas fa-tools"></i> الأدوات المساعدة';
+            toolsCard.querySelectorAll('li')[0].innerHTML = '<strong>لوحة التجارب</strong> - للنمذجة الأولية';
+            toolsCard.querySelectorAll('li')[1].innerHTML = '<strong>أسلاك التوصيل</strong> - للتوصيلات';
+            toolsCard.querySelectorAll('li')[2].innerHTML = '<strong>مزود الطاقة</strong> - طاقة ثابتة 5V/3.3V';
+            
+            // Sensors table
+            document.querySelector('.component-table th:nth-child(1)').textContent = 'المكون';
+            document.querySelector('.component-table th:nth-child(2)').textContent = 'الوظيفة';
+            
+            const sensorRows = document.querySelectorAll('.component-table tr:not(:first-child)');
+            sensorRows[0].querySelector('td:first-child').textContent = 'DHT11 / DHT22';
+            sensorRows[0].querySelector('td:last-child').textContent = 'قياس درجة الحرارة والرطوبة';
+            sensorRows[1].querySelector('td:first-child').textContent = 'BMP280 / BME280';
+            sensorRows[1].querySelector('td:last-child').textContent = 'قياس الضغط ودرجة الحرارة والرطوبة';
+            sensorRows[2].querySelector('td:first-child').textContent = 'MQ3';
+            sensorRows[2].querySelector('td:last-child').textContent = 'كشف الغازات والكحول';
+            sensorRows[3].querySelector('td:first-child').textContent = 'HC-SR04';
+            sensorRows[3].querySelector('td:last-child').textContent = 'قياس المسافة بالموجات فوق الصوتية';
+            sensorRows[4].querySelector('td:first-child').textContent = 'LDR';
+            sensorRows[4].querySelector('td:last-child').textContent = 'قياس شدة الإضاءة';
+            sensorRows[5].querySelector('td:first-child').textContent = 'PIR Sensor';
+            sensorRows[5].querySelector('td:last-child').textContent = 'كشف الحركة';
+            
+            // Output modules
+            const outputCards = document.querySelectorAll('.component-grid')[1].querySelectorAll('.component-card');
+            outputCards[0].querySelector('h4').textContent = 'الشاشات';
+            outputCards[0].querySelectorAll('li')[0].innerHTML = '<strong>شاشة LCD 16x2 (I2C)</strong> - عرض النصوص';
+            outputCards[0].querySelectorAll('li')[1].innerHTML = '<strong>شاشة OLED</strong> - عرض الرسومات والبيانات';
+            
+            outputCards[1].querySelector('h4').textContent = 'المشغلات';
+            outputCards[1].querySelectorAll('li')[0].innerHTML = '<strong>LEDs</strong> - إضاءة وإشارات ضوئية';
+            outputCards[1].querySelectorAll('li')[1].innerHTML = '<strong>الجرس</strong> - تنبيه صوتي';
+            outputCards[1].querySelectorAll('li')[2].innerHTML = '<strong>وحدة الريليه</strong> - التحكم في الأجهزة عالية الجهد';
+            
+            outputCards[2].querySelector('h4').textContent = 'المحركات';
+            outputCards[2].querySelectorAll('li')[0].innerHTML = '<strong>محركات DC + متحكم المحركات</strong> - للحركة الروبوتية';
+            outputCards[2].querySelectorAll('li')[1].innerHTML = '<strong>محركات Servo</strong> - للحركة الدقيقة';
+            
+            // Implementation steps
+            const steps = document.querySelectorAll('.step-list li');
+            steps[0].querySelector('h4').textContent = 'اختيار الفكرة';
+            steps[0].querySelector('p').textContent = 'اختيار فكرة مناسبة للأنظمة المدمجة (مثل أنظمة التحكم الآلي المعتمدة على الحساسات)';
+            
+            steps[1].querySelector('h4').textContent = 'تصميم النظام';
+            steps[1].querySelector('p').textContent = 'رسم مخطط يوضح مدخلات (حساسات)، معالجة (Arduino)، ومخرجات (شاشات، محركات، أجراس). تخطيط التوصيلات وبروتوكولات الاتصال (I2C, PWM, Serial، إلخ)';
+            
+            steps[2].querySelector('h4').textContent = 'النمذجة الأولية';
+            steps[2].querySelector('p').textContent = 'اختبار الحساسات والوحدات بشكل منفصل. استخدام Serial Monitor لتصحيح الأخطاء. التحقق من صحة المنطق قبل التنفيذ النهائي';
+            
+            steps[3].querySelector('h4').textContent = 'برمجة المتحكم';
+            steps[3].querySelector('p').textContent = 'كتابة الكود باستخدام Arduino IDE. استخدام مكتبات مثل LiquidCrystal_I2C.h للشاشات، Servo.h لمحركات Servo، SoftwareSerial.h للاتصالات';
+            
+            steps[4].querySelector('h4').textContent = 'تصميم لوحة الدوائر';
+            steps[4].querySelector('p').textContent = 'استخدام أدوات مثل Proteus أو EasyEDA. توجيه خطوط الطاقة وإشارات التحكم بكفاءة. إضافة تسميات توضيحية للمنافذ والمكونات';
+            
+            steps[5].querySelector('h4').textContent = 'التجميع واللحام';
+            steps[5].querySelector('p').textContent = 'لحام المكونات على اللوحة. التحقق من التوصيلات وتحميل الكود. اختبار النظام بعد التجميع الكامل';
+            
+            steps[6].querySelector('h4').textContent = 'التغليف النهائي';
+            steps[6].querySelector('p').textContent = 'تصميم علبة أو هيكل واقي. توفير فتحات مناسبة للUSB، الأزرار، الشاشة، مصدر الطاقة، إلخ. تأمين التوصيلات الداخلية وإدارة الحرارة إذا لزم الأمر';
+            
+            // Use cases
+            const useCases = document.querySelectorAll('.use-case');
+            useCases[0].querySelector('h4').textContent = 'نظام إشارات مرور ذكي';
+            useCases[0].querySelector('p').textContent = 'تحكم آلي في حركة المرور باستخدام الحساسات وخوارزميات التوقيت';
+            
+            useCases[1].querySelector('h4').textContent = 'محطة عرض درجة الحرارة';
+            useCases[1].querySelector('p').textContent = 'مراقبة البيئة في الوقت الحقيقي مع تسجيل البيانات';
+            
+            useCases[2].querySelector('h4').textContent = 'روبوت تحكم عن بعد عبر البلوتوث';
+            useCases[2].querySelector('p').textContent = 'روبوت متحرك بقدرات تحكم لاسلكي';
+            
+            useCases[3].querySelector('h4').textContent = 'نظام إنذار بكشف الحركة';
+            useCases[3].querySelector('p').textContent = 'نظام أمان مع حساسات حركة وتنبيهات';
+            
+            useCases[4].querySelector('h4').textContent = 'مسجل بيانات بيئية عبر إنترنت الأشياء';
+            useCases[4].querySelector('p').textContent = 'شبكة حساسات متصلة بالسحابة لمراقبة البيئة';
+            
+            // Navigation button
+            document.querySelector('.nav-button').textContent = '← صفحة الفريق';
+            
+            // Footer
+            document.querySelector('footer p').textContent = 'جامعة برج العرب التكنولوجية - مشروع تخرج 2024';
+            
+            localStorage.setItem('language', 'ar');
+        }
+        
+        function switchToEnglish() {
+            html.classList.remove('rtl');
+            html.lang = 'en';
+            langToggle.textContent = 'العربية';
+            
+            // Revert to English (original content)
+            document.querySelector('.project-title').textContent = 'L.M.S - Project Components';
+            
+            // Section titles
+            document.querySelectorAll('.section-title')[0].innerHTML = '<i class="fas fa-puzzle-piece"></i> Components Used in the Lab Embedded System Project';
+            document.querySelectorAll('.section-title')[1].innerHTML = '<i class="fas fa-temperature-low"></i> Sensors';
+            document.querySelectorAll('.section-title')[2].innerHTML = '<i class="fas fa-tv"></i> Output Modules';
+            document.querySelectorAll('.section-title')[3].innerHTML = '<i class="fas fa-cogs"></i> Project Implementation Steps';
+            document.querySelectorAll('.section-title')[4].innerHTML = '<i class="fas fa-lightbulb"></i> Sample Use Cases';
+            
+            // Microcontroller card
+            const mcCard = document.querySelectorAll('.component-card')[0];
+            mcCard.querySelector('h4').innerHTML = '<i class="fas fa-microchip"></i> Microcontroller & Core';
+            mcCard.querySelectorAll('li')[0].innerHTML = '<strong>Arduino UNO</strong> - Main microcontroller for controlling the entire system';
+            mcCard.querySelectorAll('li')[1].innerHTML = '<strong>Custom PCB Board</strong> - Designed to hold and organize all components';
+            
+            // Communication card
+            const commCard = document.querySelectorAll('.component-card')[1];
+            commCard.querySelector('h4').innerHTML = '<i class="fas fa-wifi"></i> Communication Modules';
+            commCard.querySelectorAll('li')[0].innerHTML = '<strong>HC-05/HC-06</strong> - Bluetooth communication';
+            commCard.querySelectorAll('li')[1].innerHTML = '<strong>ESP-01/ESP8266</strong> - Wi-Fi/IoT connection';
+            commCard.querySelectorAll('li')[2].innerHTML = '<strong>SIM800L</strong> - GSM module for SMS/call';
+            
+            // Tools card
+            const toolsCard = document.querySelectorAll('.component-card')[2];
+            toolsCard.querySelector('h4').innerHTML = '<i class="fas fa-tools"></i> Supporting Tools';
+            toolsCard.querySelectorAll('li')[0].innerHTML = '<strong>Breadboard</strong> - For prototyping';
+            toolsCard.querySelectorAll('li')[1].innerHTML = '<strong>Jumper Wires</strong> - For connections';
+            toolsCard.querySelectorAll('li')[2].innerHTML = '<strong>Power Supply</strong> - Stable 5V/3.3V power';
+            
+            // Sensors table
+            document.querySelector('.component-table th:nth-child(1)').textContent = 'Component';
+            document.querySelector('.component-table th:nth-child(2)').textContent = 'Function';
+            
+            const sensorRows = document.querySelectorAll('.component-table tr:not(:first-child)');
+            sensorRows[0].querySelector('td:first-child').textContent = 'DHT11 / DHT22';
+            sensorRows[0].querySelector('td:last-child').textContent = 'Temperature & Humidity sensor';
+            sensorRows[1].querySelector('td:first-child').textContent = 'BMP280 / BME280';
+            sensorRows[1].querySelector('td:last-child').textContent = 'Pressure, temperature, and humidity';
+            sensorRows[2].querySelector('td:first-child').textContent = 'MQ3';
+            sensorRows[2].querySelector('td:last-child').textContent = 'Gas and alcohol detection';
+            sensorRows[3].querySelector('td:first-child').textContent = 'HC-SR04';
+            sensorRows[3].querySelector('td:last-child').textContent = 'Ultrasonic distance measurement';
+            sensorRows[4].querySelector('td:first-child').textContent = 'LDR';
+            sensorRows[4].querySelector('td:last-child').textContent = 'Light intensity sensor';
+            sensorRows[5].querySelector('td:first-child').textContent = 'PIR Sensor';
+            sensorRows[5].querySelector('td:last-child').textContent = 'Motion detection';
+            
+            // Output modules
+            const outputCards = document.querySelectorAll('.component-grid')[1].querySelectorAll('.component-card');
+            outputCards[0].querySelector('h4').textContent = 'Displays';
+            outputCards[0].querySelectorAll('li')[0].innerHTML = '<strong>16x2 LCD (I2C)</strong> - Display text';
+            outputCards[0].querySelectorAll('li')[1].innerHTML = '<strong>OLED Display</strong> - Display graphics and data';
+            
+            outputCards[1].querySelector('h4').textContent = 'Actuators';
+            outputCards[1].querySelectorAll('li')[0].innerHTML = '<strong>LEDs</strong> - Indicators and lighting';
+            outputCards[1].querySelectorAll('li')[1].innerHTML = '<strong>Buzzer</strong> - Sound alert';
+            outputCards[1].querySelectorAll('li')[2].innerHTML = '<strong>Relay Module</strong> - Control high-voltage devices';
+            
+            outputCards[2].querySelector('h4').textContent = 'Motors';
+            outputCards[2].querySelectorAll('li')[0].innerHTML = '<strong>DC Motors + Motor Driver</strong> - For robotic movement';
+            outputCards[2].querySelectorAll('li')[1].innerHTML = '<strong>Servo Motors</strong> - Precise angular movement';
+            
+            // Implementation steps
+            const steps = document.querySelectorAll('.step-list li');
+            steps[0].querySelector('h4').textContent = 'Idea Selection';
+            steps[0].querySelector('p').textContent = 'Choose a smart, functional idea suitable for embedded systems (e.g. sensor-based automation or control systems)';
+            
+            steps[1].querySelector('h4').textContent = 'System Design';
+            steps[1].querySelector('p').textContent = 'Draw a block diagram showing inputs (sensors), processing (Arduino), and outputs (displays, motors, buzzers). Plan wiring and communication protocols (I2C, PWM, Serial, etc.)';
+            
+            steps[2].querySelector('h4').textContent = 'Prototyping on Breadboard';
+            steps[2].querySelector('p').textContent = 'Test individual sensors and modules. Use Serial Monitor for debugging. Validate working logic before final build.';
+            
+            steps[3].querySelector('h4').textContent = 'Arduino Programming';
+            steps[3].querySelector('p').textContent = 'Write code using Arduino IDE. Use libraries like LiquidCrystal_I2C.h for LCD, Servo.h for servo motors, SoftwareSerial.h for GSM/Bluetooth.';
+            
+            steps[4].querySelector('h4').textContent = 'Custom PCB Design';
+            steps[4].querySelector('p').textContent = 'Use tools like Proteus or EasyEDA. Route power lines and signal paths efficiently. Add silkscreen labels for ports and components.';
+            
+            steps[5].querySelector('h4').textContent = 'Soldering and Assembly';
+            steps[5].querySelector('p').textContent = 'Solder components onto the PCB. Verify connections and upload the code. Test the system with full integration.';
+            
+            steps[6].querySelector('h4').textContent = 'Final Enclosure';
+            steps[6].querySelector('p').textContent = 'Design a box or acrylic casing. Ensure proper openings for USB, buttons, LCD, power, etc. Secure internal wiring and manage heat if needed.';
+            
+            // Use cases
+            const useCases = document.querySelectorAll('.use-case');
+            useCases[0].querySelector('h4').textContent = 'Smart traffic light system';
+            useCases[0].querySelector('p').textContent = 'Automated traffic control using sensors and timing algorithms';
+            
+            useCases[1].querySelector('h4').textContent = 'Temperature display station';
+            useCases[1].querySelector('p').textContent = 'Real-time environmental monitoring with data logging';
+            
+            useCases[2].querySelector('h4').textContent = 'Remote-controlled robot via Bluetooth';
+            useCases[2].querySelector('p').textContent = 'Mobile robot with wireless control capabilities';
+            
+            useCases[3].querySelector('h4').textContent = 'Motion-triggered alarm system';
+            useCases[3].querySelector('p').textContent = 'Security system with PIR sensors and alert notifications';
+            
+            useCases[4].querySelector('h4').textContent = 'IoT data logger for environment';
+            useCases[4].querySelector('p').textContent = 'Cloud-connected sensor network for environmental monitoring';
+            
+            // Navigation button
+            document.querySelector('.nav-button').textContent = '← Team Page';
+            
+            // Footer
+            document.querySelector('footer p').textContent = 'Borg Al Arab Technological University - Graduation Project 2024';
+            
+            localStorage.setItem('language', 'en');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Embedded System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2962FF;
+            --secondary-color: #FFA000;
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #E3F2FD 0%, #EDE7F6 100%);
+        }
+        
+        body {
+            font-family: 'Poppins', 'Tajawal', sans-serif;
+            background: var(--bg-gradient);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        body.rtl {
+            direction: rtl;
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(21, 101, 192, 0.9);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .university-logo {
+            height: 60px;
+        }
+        
+        .project-title {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .main-content {
+            background: rgba(255,255,255,0.85);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            color: var(--secondary-color);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+        
+        .img-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .project-img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .nav-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .nav-button {
+            background: linear-gradient(to right, var(--secondary-color), #FF7043);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="lang-toggle" id="langToggle">العربية</button>
+        <div class="container logo-container">
+            <img src="WhatsApp Image 2025-06-26 at 7.00.40 PM.jpeg" alt="University Logo" class="university-logo">
+            <h1 class="project-title">L.E.S - Lab Embedded System</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Project Overview</h2>
+                <p>Lab Embedded System is an innovative educational project designed to simplify learning electronics and programming using Arduino. It provides a fully integrated lab kit that combines a wide range of essential sensors, modules, and components into plug-and-play shields.</p>
+                <p><i class="fas fa-plug"></i> Instead of dealing with messy breadboard wiring, students and beginners can directly connect these ready-made shields to the Arduino board and start experimenting right away.</p>
+            </div>
+            
+            <div class="img-container">
+                <img src="ddddd.jpg" alt="Project Image" class="project-img">
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-bullseye"></i> Project Objective</h2>
+                <p>The main goal is to provide a portable, interactive electronics lab that allows users to:</p>
+                <ul class="feature-list">
+                    <li>Learn and apply core concepts of embedded systems</li>
+                    <li>Quickly prototype and test real-world projects</li>
+                    <li>Reduce hardware complexity and focus on understanding functionality</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-puzzle-piece"></i> What's Inside the Lab Kit?</h2>
+                <ul class="feature-list">
+                    <li><strong>Sensors:</strong> Temperature, humidity, motion, gas, light, distance, etc.</li>
+                    <li><strong>Output modules:</strong> LCD, OLED, buzzer, relay, motors</li>
+                    <li><strong>Communication:</strong> Bluetooth, Wi-Fi (ESP), GSM</li>
+                    <li><strong>Inputs:</strong> Keypad, joystick, potentiometer</li>
+                    <li><strong>Custom PCB</strong> to organize all components and simplify use</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-tools"></i> Sample Projects You Can Build</h2>
+                <ul class="feature-list">
+                    <li>Distance measurement with ultrasonic sensor + LCD display</li>
+                    <li>Smart lighting system using LDR sensor</li>
+                    <li>Obstacle-avoiding robot with motion detection</li>
+                    <li>Wireless control via Bluetooth or SMS alerts via GSM</li>
+                    <li>Real-time temperature monitoring sent to the cloud (IoT)</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-globe"></i> Who Is It For?</h2>
+                <ul class="feature-list">
+                    <li>Engineering and technology students</li>
+                    <li>DIY electronics enthusiasts</li>
+                    <li>STEM educators and trainers</li>
+                </ul>
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="team.html" class="nav-button">Go to Team Page →</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Borg Al Arab Technological University - Graduation Project 2024</p>
+    </footer>
+
+    <script>
+        const langToggle = document.getElementById('langToggle');
+        const html = document.documentElement;
+        
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('language');
+        if (savedLang === 'ar') {
+            switchToArabic();
+        }
+        
+        langToggle.addEventListener('click', function() {
+            if (html.classList.contains('rtl')) {
+                switchToEnglish();
+            } else {
+                switchToArabic();
+            }
+        });
+        
+        function switchToArabic() {
+            html.classList.add('rtl');
+            html.lang = 'ar';
+            langToggle.textContent = 'English';
+            
+            // Update content to Arabic
+            document.querySelector('.project-title').textContent = 'L.M.S - نظام المختبر المدمج';
+            
+            // Section titles
+            document.querySelectorAll('.section-title')[0].innerHTML = '<i class="fas fa-lightbulb"></i> نظرة عامة على المشروع';
+            document.querySelectorAll('.section-title')[1].innerHTML = '<i class="fas fa-bullseye"></i> أهداف المشروع';
+            document.querySelectorAll('.section-title')[2].innerHTML = '<i class="fas fa-puzzle-piece"></i> مكونات المجموعة';
+            document.querySelectorAll('.section-title')[3].innerHTML = '<i class="fas fa-tools"></i> نماذج مشاريع ممكنة';
+            document.querySelectorAll('.section-title')[4].innerHTML = '<i class="fas fa-globe"></i> الفئة المستهدفة';
+            
+            // Project overview
+            document.querySelectorAll('.section p')[0].textContent = 'نظام المختبر المدمج هو مشروع تعليمي مبتكر مصمم لتبسيط تعلم الإلكترونيات والبرمجة باستخدام Arduino. يوفر مجموعة متكاملة من الحساسات والوحدات الجاهزة للاستخدام الفوري.';
+            document.querySelectorAll('.section p')[1].innerHTML = '<i class="fas fa-plug"></i> بدلاً من التعامل مع توصيلات معقدة، يمكن للطلاب والمبتدئين توصيل هذه الوحدات الجاهزة مباشرة بلوحة Arduino والبدء في التجارب على الفور.';
+            
+            // Project objectives
+            const objectives = document.querySelectorAll('.feature-list')[0].querySelectorAll('li');
+            objectives[0].textContent = 'تعلم وتطبيق مفاهيم الأنظمة المدمجة';
+            objectives[1].textContent = 'تصميم نماذج مشاريع عملية بسرعة';
+            objectives[2].textContent = 'تقليل التعقيدات الفنية والتركيز على الفهم العملي';
+            
+            // Kit contents
+            const kitItems = document.querySelectorAll('.feature-list')[1].querySelectorAll('li');
+            kitItems[0].innerHTML = '<strong>الحساسات:</strong> درجة الحرارة، الرطوبة، الحركة، الغازات، الضوء، المسافة، إلخ.';
+            kitItems[1].innerHTML = '<strong>وحدات الإخراج:</strong> شاشات LCD، OLED، صفارات، ريليه، محركات';
+            kitItems[2].innerHTML = '<strong>الاتصالات:</strong> بلوتوث، واي فاي (ESP)، GSM';
+            kitItems[3].innerHTML = '<strong>أدوات الإدخال:</strong> لوحة مفاتيح، عصا تحكم، مقياس جهد';
+            kitItems[4].innerHTML = '<strong>لوحة دوائر مطبوعة مخصصة</strong> لتنظيم جميع المكونات وتبسيط الاستخدام';
+            
+            // Sample projects
+            const projects = document.querySelectorAll('.feature-list')[2].querySelectorAll('li');
+            projects[0].textContent = 'قياس المسافة باستخدام حساس فوق صوتي وعرضها على شاشة LCD';
+            projects[1].textContent = 'نظام إضاءة ذكي باستخدام حساس ضوئي';
+            projects[2].textContent = 'روبوت يتجنب العوائق مع كشف الحركة';
+            projects[3].textContent = 'تحكم لاسلكي عبر البلوتوث أو تنبيهات SMS عبر GSM';
+            projects[4].textContent = 'مراقبة درجة الحرارة في الوقت الحقيقي وإرسالها للسحابة (إنترنت الأشياء)';
+            
+            // Target audience
+            const audience = document.querySelectorAll('.feature-list')[3].querySelectorAll('li');
+            audience[0].textContent = 'طلاب الهندسة والتكنولوجيا';
+            audience[1].textContent = 'هواة الإلكترونيات';
+            audience[2].textContent = 'المعلمين والمدربين في مجالات STEM';
+            
+            document.querySelector('.nav-button').textContent = 'انتقل إلى صفحة الفريق →';
+            document.querySelector('footer p').textContent = 'جامعة برج العرب التكنولوجية - مشروع تخرج 2024';
+            
+            localStorage.setItem('language', 'ar');
+        }
+        
+        function switchToEnglish() {
+            html.classList.remove('rtl');
+            html.lang = 'en';
+            langToggle.textContent = 'العربية';
+            
+            // Revert content to English
+            document.querySelector('.project-title').textContent = 'L.M.S - Lab Embedded System';
+            
+            // Section titles
+            document.querySelectorAll('.section-title')[0].innerHTML = '<i class="fas fa-lightbulb"></i> Project Overview';
+            document.querySelectorAll('.section-title')[1].innerHTML = '<i class="fas fa-bullseye"></i> Project Objective';
+            document.querySelectorAll('.section-title')[2].innerHTML = '<i class="fas fa-puzzle-piece"></i> What\'s Inside the Lab Kit?';
+            document.querySelectorAll('.section-title')[3].innerHTML = '<i class="fas fa-tools"></i> Sample Projects You Can Build';
+            document.querySelectorAll('.section-title')[4].innerHTML = '<i class="fas fa-globe"></i> Who Is It For?';
+            
+            // Project overview
+            document.querySelectorAll('.section p')[0].textContent = 'Lab Embedded System is an innovative educational project designed to simplify learning electronics and programming using Arduino. It provides a fully integrated lab kit that combines a wide range of essential sensors, modules, and components into plug-and-play shields.';
+            document.querySelectorAll('.section p')[1].innerHTML = '<i class="fas fa-plug"></i> Instead of dealing with messy breadboard wiring, students and beginners can directly connect these ready-made shields to the Arduino board and start experimenting right away.';
+            
+            // Project objectives
+            const objectives = document.querySelectorAll('.feature-list')[0].querySelectorAll('li');
+            objectives[0].textContent = 'Learn and apply core concepts of embedded systems';
+            objectives[1].textContent = 'Quickly prototype and test real-world projects';
+            objectives[2].textContent = 'Reduce hardware complexity and focus on understanding functionality';
+            
+            // Kit contents
+            const kitItems = document.querySelectorAll('.feature-list')[1].querySelectorAll('li');
+            kitItems[0].innerHTML = '<strong>Sensors:</strong> Temperature, humidity, motion, gas, light, distance, etc.';
+            kitItems[1].innerHTML = '<strong>Output modules:</strong> LCD, OLED, buzzer, relay, motors';
+            kitItems[2].innerHTML = '<strong>Communication:</strong> Bluetooth, Wi-Fi (ESP), GSM';
+            kitItems[3].innerHTML = '<strong>Inputs:</strong> Keypad, joystick, potentiometer';
+            kitItems[4].innerHTML = '<strong>Custom PCB</strong> to organize all components and simplify use';
+            
+            // Sample projects
+            const projects = document.querySelectorAll('.feature-list')[2].querySelectorAll('li');
+            projects[0].textContent = 'Distance measurement with ultrasonic sensor + LCD display';
+            projects[1].textContent = 'Smart lighting system using LDR sensor';
+            projects[2].textContent = 'Obstacle-avoiding robot with motion detection';
+            projects[3].textContent = 'Wireless control via Bluetooth or SMS alerts via GSM';
+            projects[4].textContent = 'Real-time temperature monitoring sent to the cloud (IoT)';
+            
+            // Target audience
+            const audience = document.querySelectorAll('.feature-list')[3].querySelectorAll('li');
+            audience[0].textContent = 'Engineering and technology students';
+            audience[1].textContent = 'DIY electronics enthusiasts';
+            audience[2].textContent = 'STEM educators and trainers';
+            
+            document.querySelector('.nav-button').textContent = 'Go to Team Page →';
+            document.querySelector('footer p').textContent = 'Borg Al Arab Technological University - Graduation Project 2024';
+            
+            localStorage.setItem('language', 'en');
+        }
+    </script>
+</body>
+</html>
